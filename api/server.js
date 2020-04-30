@@ -6,6 +6,7 @@ const sesssion = require("express-session");
 const knexSessionStore = require("connect-session-knex");
 // add routers
 const usersRouter = require("../users/users-router");
+const authRouter = require("../auth/auth-router.js");
 
 const server = express();
 
@@ -15,6 +16,7 @@ server.use(cors());
 // server.use(sesssion(sessionConfig));
 
 server.use("/api/users", usersRouter);
+server.use("/api/auth", authRouter);
 
 server.get("/", (req, res) => {
   res.json({ api: "up" });
